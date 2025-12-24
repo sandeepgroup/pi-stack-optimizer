@@ -2,7 +2,7 @@
 
 
 
-# How to activate the repository scripts in your shell
+## How to activate the repository scripts in your shell
 
 Source the activation script to get `pi-stack-generator` and `pi-hyperopt` available in your shell session.
 
