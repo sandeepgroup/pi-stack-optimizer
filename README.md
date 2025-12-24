@@ -27,3 +27,19 @@ If you prefer executable scripts instead of functions, make the script files exe
 chmod +x pi-stack-generator.py
 chmod +x hyperparameter-opt/hyperopt.py
 ```
+
+For more details, please refer to the corresponding publication. If you use this code in your work, we kindly request that you cite the following paper:
+
+**Citation**
+
+Ghosh, A., Barik, S., Singh, R. J., & Reddy, S. K. (2025). *π-Stack Optimizer: A high-performance computational framework for discovering energetically favorable stacking configurations in molecular systems.*
+
+**BibTeX**
+
+@article{ghosh2025pistack,
+  title        = {π-Stack Optimizer: A high-performance computational framework for discovering energetically favorable stacking configurations in molecular systems},
+  author       = {Ghosh, Arunima and Barik, Susmita and Singh, Roshan J. and Reddy, Sandeep K.},
+  year         = {2025}
+}
+
+
