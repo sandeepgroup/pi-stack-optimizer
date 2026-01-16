@@ -4,6 +4,7 @@ from typing import List, Tuple, Set, Optional
 from rdkit import Chem
 from rdkit.Chem import AllChem
 from rdkit.Chem import Draw
+from rdkit.Chem import rdDetermineBonds
 
 def read_xyz(xyz_file: str) -> Tuple[List[str], np.ndarray]:
     with open(xyz_file) as f:
@@ -43,6 +44,12 @@ def xyz_to_mol(atoms: List[str], coords: np.ndarray) -> Chem.Mol:
         a = Chem.Atom(atom)
         idx = mol.AddAtom(a)
         atom_indices.append(idx)
+    
+    # Add a conformer with the 3D coordinates
+    conf = Chem.Conformer(len(atoms))
+    for i in range(len(atoms)):
+        conf.SetAtomPosition(i, coords[i].tolist())
+    mol.AddConformer(conf)
 
     # Add bonds based on interatomic distances (covalent radii + tolerance)
     cov_radii = {
@@ -59,6 +66,14 @@ def xyz_to_mol(atoms: List[str], coords: np.ndarray) -> Chem.Mol:
                 mol.AddBond(i, j, Chem.BondType.SINGLE)
 
     mol = mol.GetMol()
+    
+    # Determine bond orders from 3D coordinates
+    try:
+        # Let RDKit determine the charge automatically
+        rdDetermineBonds.DetermineBonds(mol)
+    except Exception as e:
+        print(f"Warning: Could not determine bond orders: {e}")
+    
     return mol
 
 def find_dihedrals_from_xyz(xyz_file: str) -> List[Tuple[Tuple[int, int, int, int], float]]:
@@ -364,12 +379,9 @@ def draw_molecule_with_dihedrals(mol: Chem.Mol, torsions_list: List[Tuple[Tuple[
         from matplotlib.patches import FancyArrowPatch, Circle
         from rdkit.Chem import rdDepictor
         
-        # Generate 2D coordinates if not present
-        if mol.GetNumConformers() == 0 or not hasattr(mol.GetConformer(), 'Is3D') or mol.GetConformer().Is3D():
-            mol_2d = Chem.Mol(mol)
-            rdDepictor.Compute2DCoords(mol_2d)
-        else:
-            mol_2d = mol
+        # Create a copy for 2D drawing and compute 2D coordinates
+        mol_2d = Chem.Mol(mol)
+        rdDepictor.Compute2DCoords(mol_2d)
         
         # Get 2D coordinates
         conf = mol_2d.GetConformer()
@@ -490,21 +502,6 @@ def draw_molecule_with_dihedrals(mol: Chem.Mol, torsions_list: List[Tuple[Tuple[
                 ax.add_patch(circle)
                 ax.text(label_x, label_y, f'D{label_num}', fontsize=9, weight='bold',
                        ha='center', va='center', color='white', zorder=11)
-        
-        # Add legend/labels for each dihedral
-        legend_text = []
-        for i, (atoms_tuple, angle) in enumerate(torsions_list):
-            if one_based:
-                atoms_display = tuple(x + 1 for x in atoms_tuple)
-            else:
-                atoms_display = atoms_tuple
-            legend_text.append(f"D{i+1}: {atoms_display}  ({angle:.1f}°)")
-        
-        # Add text box with dihedral information
-        textstr = '\n'.join(legend_text)
-        props = dict(boxstyle='round', facecolor='wheat', alpha=0.95, edgecolor='black', linewidth=2)
-        ax.text(0.02, 0.98, textstr, transform=ax.transAxes, fontsize=11,
-                verticalalignment='top', bbox=props, family='monospace', weight='bold')
         
         plt.tight_layout(pad=0)
         plt.savefig(output_path, dpi=150, bbox_inches='tight')
