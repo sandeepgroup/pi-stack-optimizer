@@ -14,13 +14,16 @@ import sys
 from typing import List, Dict, Tuple, Optional
 import re
 
-# Import functions from new.py
-from main import (
-    read_xyz_file, write_xyz_file, align_pi_core_to_xy, 
-    rotate_fragment_around_bond, build_n_layer_stack,
-    transformation_matrix, apply_transform, build_bond_graph,
-    find_fragment_indices, load_torsions_file, set_thread_env_vars
-)
+# Add pi-stack-optimizer modules to path
+script_dir = os.path.dirname(os.path.abspath(__file__))
+sys.path.insert(0, os.path.join(script_dir, 'pi-stack-optimizer'))
+
+# Import functions from modules
+from modules.xyz_io import read_xyz_file, write_xyz_file
+from modules.geometry import align_pi_core_to_xy, transformation_matrix, apply_transform, build_bond_graph
+from modules.torsion import rotate_fragment_around_bond, find_fragment_indices, load_torsions_file
+from modules.stacking import build_n_layer_stack
+from modules.system_utils import set_thread_env_vars
 
 def parse_optimization_results(filename: str) -> Dict:
     """Parse optimization_results.txt file to extract parameters."""
