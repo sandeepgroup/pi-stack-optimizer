@@ -505,8 +505,8 @@ def main(argv: Optional[List[str]] = None) -> int:
         if full_best_torsions.size > 0:
             f.write("Full torsion angles (degrees): " +
                     ", ".join(f"{np.degrees(t):.3f}" for t in full_best_torsions) + "\n")
-    write_xyz_file("molecule_after_torsion.xyz", final_coords + monomer_center,
-                   atom_types, "Monomer after applying torsions")
+            write_xyz_file("molecule_after_torsion.xyz", final_coords + monomer_center,
+                     atom_types, "Monomer after applying torsions")
 
     n_molecules = 10
     _, stack_coords, _ = build_n_layer_stack(
