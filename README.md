@@ -1,7 +1,7 @@
 **π-Stack Optimizer** is a high-performance computational framework for discovering energetically favorable stacking configurations in molecular systems. Leveraging semi-empirical quantum chemistry (xTB) coupled with multiple global optimization algorithms (PSO, GA, GWO, PSO+Nelder–Mead), this tool provides researchers with a flexible, efficient, and reproducible workflow for π-stacking studies. The system features parallel energy evaluations, automatic symmetry detection, and comprehensive logging capabilities, making it suitable for both exploratory research and production computational chemistry pipelines.
 
 **Authors:** 
-Arunima Ghosh, Susmita Barik, Roshan J. Singh, & Sandeep K. Reddy
+Arunima Ghosh, Susmita Barik, Roshan J Singh, & Sandeep K. Reddy
 
 **How to activate the repository scripts in your shell**
 
