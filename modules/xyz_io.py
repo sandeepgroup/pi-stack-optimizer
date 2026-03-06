@@ -8,13 +8,14 @@ import numpy as np
 
 def read_xyz_file(filename: str) -> Tuple[np.ndarray, List[str]]:
     with open(filename, 'r') as f:
-        lines = [l.strip() for l in f if l.strip()]
+        lines = [l.rstrip() for l in f]  # Keep all lines, only strip trailing whitespace
     n_atoms = int(lines[0])
     coords, atom_types = [], []
     for line in lines[2:2 + n_atoms]:
         parts = line.split()
-        atom_types.append(parts[0])
-        coords.append([float(parts[1]), float(parts[2]), float(parts[3])])
+        if len(parts) >= 4:  # Valid atom line with element and 3 coordinates
+            atom_types.append(parts[0])
+            coords.append([float(parts[1]), float(parts[2]), float(parts[3])])
     return np.array(coords), atom_types
 
 
