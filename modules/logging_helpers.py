@@ -60,7 +60,7 @@ def print_run_banner(start_time_str: str) -> None:
     print("using xTB Quantum Chemistry + Swarm / Genetic Optimizers")
     print("═" * 80)
     print()
-    print("Authors: Arunima Ghosh, Susmita Barik, Sandeep K. Reddy")
+    print("Authors: Arunima Ghosh, Susmita Barik, Roshan J Singh, Sandeep K. Reddy")
     print()
     print(f"Start time: {start_time_str}")
     print()
