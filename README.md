@@ -35,14 +35,14 @@ chmod +x hyperparameter-opt/hyperopt.py
 ```
 **Documentation:**
 
-Complete documentation, installation instructions, and tutorials are available at:https://stack-pso.readthedocs.io/en/latest/
+Complete documentation, installation instructions, and tutorials are available at: https://stack-pso.readthedocs.io/en/latest/
 
 For more details, please refer to the corresponding publication. If you use this framework in your work, we kindly request that you cite the following paper:
 
 **Citation**
+
 Ghosh, A., Susmita, B., Singh, R.J. et al. *π-Stack optimizer: framework for the design of one-dimensional supramolecular systems.* Journal of Molecular Modeling, 32, 188 (2026). https://doi.org/10.1007/s00894-026-06725-4
 
-Ghosh, A., Barik, S., Singh, R. J, & Reddy, S. K. (2026). *π-Stack Optimizer: A high-performance computational framework for discovering energetically favorable stacking configurations in molecular systems.*
 
 **BibTeX**
 @article{ghosh2026pistack,
