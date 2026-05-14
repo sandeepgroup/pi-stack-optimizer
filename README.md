@@ -47,7 +47,7 @@ Ghosh, A., Susmita, B., Singh, R.J. et al. *π-Stack optimizer: framework for th
 
 **BibTeX**
 
-
+```bibtex
 @article{ghosh2026pistack,
   title   = {{$\pi$-stack optimizer: framework for the design of one-dimensional supramolecular systems}},
   author  = {Ghosh, Arunima and Barik, Susmita and Singh, Roshan J. and Reddy, Sandeep K.},
@@ -59,5 +59,5 @@ Ghosh, A., Susmita, B., Singh, R.J. et al. *π-Stack optimizer: framework for th
   doi     = {10.1007/s00894-026-06725-4},
   url     = {https://link.springer.com/10.1007/s00894-026-06725-4}
 }
-
+```
 
