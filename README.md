@@ -1,4 +1,12 @@
-**π-Stack Optimizer** is a high-performance computational framework for discovering energetically favorable stacking configurations in molecular systems. Leveraging semi-empirical quantum chemistry (xTB) coupled with multiple global optimization algorithms (PSO, GA, GWO, PSO+Nelder–Mead), this tool provides researchers with a flexible, efficient, and reproducible workflow for π-stacking studies. The system features parallel energy evaluations, automatic symmetry detection, and comprehensive logging capabilities, making it suitable for both exploratory research and production computational chemistry pipelines.
+**π-Stack Optimizer** is a high-performance computational framework for discovering energetically favorable stacking configurations in molecular systems. Leveraging semi-empirical quantum chemistry (xTB) coupled with multiple global optimization algorithms (PSO, GA, GWO, PSO+Nelder–Mead), this tool provides researchers with a flexible, efficient, and reproducible workflow for π-stacking studies.
+The framework systematically explores translational, rotational, and optional intramolecular torsional degrees of freedom to identify stable low-energy supramolecular assemblies directly from a monomeric building block. Additional features include:
+  - Parallel energy evaluations
+  - Automatic symmetry detection
+  - Hyperparameter optimization
+  - Comprehensive logging and reproducibility support
+  - Modular architecture for extensibility
+  
+The tool is suitable for both exploratory supramolecular research and large-scale computational chemistry workflows.
 
 **Authors:** 
 Arunima Ghosh, Susmita Barik, Roshan J Singh, & Sandeep K. Reddy
@@ -7,40 +15,46 @@ Arunima Ghosh, Susmita Barik, Roshan J Singh, & Sandeep K. Reddy
 
 Source the activation script to get `pi-stack-generator` and `pi-hyperopt` available in your shell session.
 
-For complete documentation, refer to `doc/manual.pdf`.
-
 From the repo root:
 
 ```bash
 source ./activate_pi_stack.sh
 ```
-
-This does three things:
+This performs the following:
 - Adds the project root to your `PATH` so scripts can be executed directly.
 - Adds the project root to `PYTHONPATH` so `import modules.*` resolves.
 - Defines two shell functions:
   - `pi-stack-generator` -> runs `pi-stack-generator.py` with the same args.
   - `pi-hyperopt` -> runs `hyperparameter-opt/hyperopt.py` with the same args.
 
-If you prefer executable scripts instead of functions, make the script files executable:
+If preferred, make the scripts directly executable:
 
 ```bash
 chmod +x pi-stack-generator.py
 chmod +x hyperparameter-opt/hyperopt.py
 ```
+**Documentation:**
+
+Complete documentation, installation instructions, tutorials, and usage examples are available at:https://stack-pso.readthedocs.io/en/latest/
 
 For more details, please refer to the corresponding publication. If you use this code in your work, we kindly request that you cite the following paper:
 
 **Citation**
+Ghosh, A., Susmita, B., Singh, R.J. et al. *π-Stack optimizer: framework for the design of one-dimensional supramolecular systems.* Journal of Molecular Modeling, 32, 188 (2026). https://doi.org/10.1007/s00894-026-06725-4
 
 Ghosh, A., Barik, S., Singh, R. J, & Reddy, S. K. (2026). *π-Stack Optimizer: A high-performance computational framework for discovering energetically favorable stacking configurations in molecular systems.*
 
 **BibTeX**
-
 @article{ghosh2026pistack,
-  title        = {π-Stack Optimizer: A high-performance computational framework for discovering energetically favorable stacking configurations in molecular systems},
-  author       = {Ghosh, Arunima and Barik, Susmita and Singh, Roshan J and Reddy, Sandeep K.},
-  year         = {2026}
+  title   = {{$\pi$-stack optimizer: framework for the design of one-dimensional supramolecular systems}},
+  author  = {Ghosh, Arunima and Barik, Susmita and Singh, Roshan J. and Reddy, Sandeep K.},
+  journal = {Journal of Molecular Modeling},
+  volume  = {32},
+  number  = {6},
+  pages   = {188},
+  year    = {2026},
+  doi     = {10.1007/s00894-026-06725-4},
+  url     = {https://link.springer.com/10.1007/s00894-026-06725-4}
 }
 
 
