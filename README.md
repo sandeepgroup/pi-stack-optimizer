@@ -7,7 +7,6 @@ The framework systematically explores translational, rotational, and optional in
   - Modular architecture for extensibility
   
 The tool is suitable for both exploratory supramolecular research and large-scale computational chemistry workflows.
-Ghosh, A., Barik, S., Singh, R. J, & Reddy, S. K. (2026). *π-Stack Optimizer: A high-performance computational framework for discovering energetically favorable stacking configurations in molecular systems.*
 
 **Authors:** 
 Arunima Ghosh, Susmita Barik, Roshan J Singh, & Sandeep K. Reddy
