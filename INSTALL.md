@@ -1,25 +1,59 @@
-# How to activate the repository scripts in your shell
+# Installation
 
-Source the activation script to get `pi-stack-generator` and `pi-hyperopt` available in your shell session.
+## Requirements
 
-For complete documentation, refer to `doc/manual.pdf`.
+- Python 3.9 or newer.
+- The `xtb` executable available on `PATH`.
+- NumPy for the main optimizer.
+- Optuna for `pi-hyperopt`.
+- RDKit only for utility scripts that infer torsions from chemistry files.
 
-From the repo root:
+## Setup
+
+```bash
+git clone https://github.com/sandeepgroup/pi-stack-optimizer.git
+cd pi-stack-optimizer
+
+python3 -m venv .venv
+source .venv/bin/activate
+python -m pip install --upgrade pip
+python -m pip install numpy
+```
+
+Install xTB, for example with conda:
+
+```bash
+conda install -c conda-forge xtb
+xtb --version
+```
+
+Optional hyperparameter optimization dependency:
+
+```bash
+python -m pip install optuna
+```
+
+## Activate Commands
+
+From the repository root:
 
 ```bash
 source ./activate_pi_stack.sh
 ```
 
-This does three things:
-- Adds the project root to your `PATH` so scripts can be executed directly.
-- Adds the project root to `PYTHONPATH` so `import modules.*` resolves.
-- Defines two shell functions:
-  - `pi-stack-generator` -> runs `pi-stack-generator.py` with the same args.
-  - `pi-hyperopt` -> runs `hyperparameter-opt/hyperopt.py` with the same args.
+This adds the project root to `PATH` and `PYTHONPATH`, and defines:
 
-If you prefer executable scripts instead of functions, make the script files executable:
+- `pi-stack-generator`, which runs `pi-stack-generator.py`.
+- `pi-hyperopt`, which runs `hyperparameter-opt/hyperopt.py`.
+
+## Verify
 
 ```bash
-chmod +x pi-stack-generator.py
-chmod +x hyperparameter-opt/hyperopt.py
+pi-stack-generator test/BTA.xyz --workers 1 --threads 1 --max-iters 5
 ```
+
+If xTB is installed and the geometry passes validation, the run writes
+`output.log`, `optimization_results.txt`, and
+`molecular_stack_10molecules.xyz`.
+
+Complete source documentation is in `docs/`.

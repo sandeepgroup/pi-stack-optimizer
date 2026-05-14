@@ -1,50 +1,84 @@
-**π-Stack Optimizer** is a high-performance computational framework for discovering energetically favorable stacking configurations in molecular systems. Leveraging semi-empirical quantum chemistry (xTB) together with multiple global optimization algorithms (PSO, GA, GWO, and PSO+Nelder–Mead), the framework provides researchers with a flexible, efficient, and reproducible workflow for π-stacking studies.
-The framework systematically explores translational, rotational, and optional intramolecular torsional degrees of freedom to identify stable low-energy supramolecular assemblies directly from a monomeric building block. Additional features include:
-  - Parallel energy evaluations
-  - Automatic symmetry detection
-  - Hyperparameter optimization
-  - Comprehensive logging and reproducibility support
-  - Modular architecture for extensibility
-  
-The tool is suitable for both exploratory supramolecular research and large-scale computational chemistry workflows.
+# pi-Stack Optimizer
 
-**Authors:** 
-Arunima Ghosh, Susmita Barik, Roshan J Singh, & Sandeep K. Reddy
+`pi-stack-optimizer` is a command-line framework for discovering low-energy
+one-dimensional molecular stacking geometries from a monomer XYZ structure. It
+combines xTB single-point energy calculations with global optimizers including
+PSO, GA, GWO, and a PSO plus Nelder-Mead hybrid.
 
-**How to activate the repository scripts in your shell**
+Core capabilities:
 
-Source the activation script to get `pi-stack-generator` and `pi-hyperopt` available in your shell session.
+- Rigid-body stack optimization from a single monomer.
+- Optional intramolecular torsion optimization.
+- Symmetric torsion dimension reduction.
+- Parallel xTB energy evaluation.
+- Cached hyperparameter optimization through `pi-hyperopt`.
+- Sphinx documentation for Read the Docs.
 
-From the repo root:
+## Authors
+
+Arunima Ghosh, Susmita Barik, Roshan J Singh, and Sandeep K. Reddy
+
+## Quick Start
 
 ```bash
+git clone https://github.com/sandeepgroup/pi-stack-optimizer.git
+cd pi-stack-optimizer
+
+python3 -m venv .venv
+source .venv/bin/activate
+python -m pip install --upgrade pip
+python -m pip install numpy
+
 source ./activate_pi_stack.sh
+pi-stack-generator test/BTA.xyz --workers 1 --threads 1 --max-iters 5
 ```
-This performs the following:
-- Adds the project root to your `PATH` so scripts can be executed directly.
-- Adds the project root to `PYTHONPATH` so `import modules.*` resolves.
-- Defines two shell functions:
-  - `pi-stack-generator` -> runs `pi-stack-generator.py` with the same args.
-  - `pi-hyperopt` -> runs `hyperparameter-opt/hyperopt.py` with the same args.
 
-If preferred, make the scripts directly executable:
+The main optimizer requires the `xtb` executable on `PATH`.
 
 ```bash
-chmod +x pi-stack-generator.py
-chmod +x hyperparameter-opt/hyperopt.py
+conda install -c conda-forge xtb
+xtb --version
 ```
-**Documentation:**
 
-Complete documentation, installation instructions, and tutorials are available at: https://stack-pso.readthedocs.io/en/latest/
+For hyperparameter optimization, install Optuna:
 
-For more details, please refer to the corresponding publication. If you use this framework in your work, we kindly request that you cite the following paper:
+```bash
+python -m pip install optuna
+```
 
-**Citation**
+## Commands
 
-Ghosh, A., Susmita, B., Singh, R.J. et al. *π-Stack optimizer: framework for the design of one-dimensional supramolecular systems.* Journal of Molecular Modeling, 32, 188 (2026). https://doi.org/10.1007/s00894-026-06725-4
+After sourcing `activate_pi_stack.sh`:
 
+- `pi-stack-generator` runs `pi-stack-generator.py`.
+- `pi-hyperopt` runs `hyperparameter-opt/hyperopt.py`.
 
-**BibTeX**
+Without activation, call the scripts directly with Python:
+
+```bash
+python pi-stack-generator.py --help
+python hyperparameter-opt/hyperopt.py --help
+```
+
+## Documentation
+
+The Read the Docs source lives in `docs/`.
+
+Build it locally with:
+
+```bash
+python -m pip install -r docs/requirements.txt
+python -m sphinx -W -b html docs docs/_build/html
+```
+
+The published documentation is available at:
+https://stack-pso.readthedocs.io/en/latest/
+
+## Citation
+
+Ghosh, A., Barik, S., Singh, R. J. et al. *pi-stack optimizer: framework for
+the design of one-dimensional supramolecular systems.* Journal of Molecular
+Modeling, 32, 188 (2026). https://doi.org/10.1007/s00894-026-06725-4
 
 ```bibtex
 @article{ghosh2026pistack,
@@ -59,4 +93,3 @@ Ghosh, A., Susmita, B., Singh, R.J. et al. *π-Stack optimizer: framework for th
   url     = {https://link.springer.com/10.1007/s00894-026-06725-4}
 }
 ```
-
