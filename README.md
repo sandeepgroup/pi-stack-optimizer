@@ -1,4 +1,4 @@
-**π-Stack Optimizer** is a high-performance computational framework for discovering energetically favorable stacking configurations in molecular systems. Leveraging semi-empirical quantum chemistry (xTB) coupled with multiple global optimization algorithms (PSO, GA, GWO, PSO+Nelder–Mead), this tool provides researchers with a flexible, efficient, and reproducible workflow for π-stacking studies.
+**π-Stack Optimizer** is a high-performance computational framework for discovering energetically favorable stacking configurations in molecular systems. Leveraging semi-empirical quantum chemistry (xTB) together with multiple global optimization algorithms (PSO, GA, GWO, and PSO+Nelder–Mead), the framework provides researchers with a flexible, efficient, and reproducible workflow for π-stacking studies.
 The framework systematically explores translational, rotational, and optional intramolecular torsional degrees of freedom to identify stable low-energy supramolecular assemblies directly from a monomeric building block. Additional features include:
   - Parallel energy evaluations
   - Automatic symmetry detection
@@ -35,9 +35,9 @@ chmod +x hyperparameter-opt/hyperopt.py
 ```
 **Documentation:**
 
-Complete documentation, installation instructions, tutorials, and usage examples are available at:https://stack-pso.readthedocs.io/en/latest/
+Complete documentation, installation instructions, and tutorials are available at:https://stack-pso.readthedocs.io/en/latest/
 
-For more details, please refer to the corresponding publication. If you use this code in your work, we kindly request that you cite the following paper:
+For more details, please refer to the corresponding publication. If you use this framework in your work, we kindly request that you cite the following paper:
 
 **Citation**
 Ghosh, A., Susmita, B., Singh, R.J. et al. *π-Stack optimizer: framework for the design of one-dimensional supramolecular systems.* Journal of Molecular Modeling, 32, 188 (2026). https://doi.org/10.1007/s00894-026-06725-4
