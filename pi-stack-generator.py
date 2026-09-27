@@ -93,8 +93,8 @@ def parse_args(argv: Optional[List[str]] = None) -> argparse.Namespace:
     )
     parser.add_argument("xyz", help="Monomer XYZ file")
     general = parser.add_argument_group("General options")
-    general.add_argument("--n-layer", type=int, default=2,
-                         help="Number of layers used for energy evaluation (default: 2)")
+    general.add_argument("--n-layer", type=int, default=3,
+                         help="Number of layers used for energy evaluation (default: 3)")
     general.add_argument("--optimizer", choices=list_supported_methods(), default="pso",
                          help="Optimization method to use (default: pso)")
     general.add_argument("--max-iters", type=int, default=300,
